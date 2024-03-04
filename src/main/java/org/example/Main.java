@@ -4,5 +4,6 @@ public class Main {
         System.out.println("Hello World!");
         System.out.println("Hi");
         System.out.println("Merge Test");
+        System.out.println("Merge Test #2");
     }
 }
