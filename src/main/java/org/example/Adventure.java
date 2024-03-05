@@ -10,12 +10,11 @@ public class Adventure {
         Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...");
         Room room2 = new Room("Room 2", "A bloody room with guts on the floor...");
         Room room3 = new Room("Room 3", "A room with weird symbols on the wall");
-        Room room4 = new Room("Room 4", "A room with Fie Laursen");
+        Room room4 = new Room("Room 4", "A room with ?");
         Room room5 = new Room("Room 5", "lalala");
         Room room6 = new Room("Room 6", "hej");
         Room room7 = new Room("Room 7", "med");
         Room room8 = new Room("Room 8", "dig");
-
         currentRoom = room1;
     }
 

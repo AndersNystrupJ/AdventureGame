@@ -5,12 +5,19 @@ public class UserInterface {
     public static void main(String[] args) {
         Adventure adventure = new Adventure();
 
-        public void startGame() {
+        public UserInterface() {
+        }
+
+        public void startGame () {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Velkommen til Adventure Game");
-            System.out.println("Skriv 'hjælp' for intruktioner til spillet");
+            System.out.println("Skriv 'help' for intruktioner til spillet");
             System.out.println();
 
+            System.out.println("You wake up in " + adventure.getCurrentRoom().getRoomDescription());
+            System.out.println("On the door it says " + adventure.getCurrentRoom().getRoomNumber());
+
+            System.out.println("Where do you choose to go?");
             while (true) { //infinite loop til break; bruges
                 String menuOption = scanner.nextLine();
 
@@ -22,7 +29,9 @@ public class UserInterface {
                     adventure.goEast();
                 } else if (menuOption.equals("s")) {
                     adventure.goSouth();
-                } else if (menuOption.equals("hjælp")) {
+                } else if (menuOption.equals("look")) {
+                    adventure.look();
+                } else if (menuOption.equals("help")) {
                     System.out.println("Kommandoer:");
                     System.out.println(" 'n' for at gå mod nord");
                     System.out.println(" 'w' for at gå mod vest");
@@ -34,10 +43,12 @@ public class UserInterface {
                     System.out.println("Du har afsluttet spillet");
                     break;
                 } else {
-                    System.out.println("Ugyldigt. Skriv 'hjælp' for instruktioner til spillet.");
+                    System.out.println("Ugyldigt. Skriv 'help' for instruktioner til spillet.");
                 }
             }
         }
+    }
+}
 
 
         /*
@@ -70,6 +81,3 @@ public class UserInterface {
         }
 
          */
-
-    }
-}
