@@ -50,7 +50,6 @@ public class UserInterface {
     }
 }
 
-
         /*
         System.out.println(AdventureGame.getCurrentRoom().getRoomNumber());
         System.out.println(AdventureGame.getCurrentRoom().getRoomDescription());
