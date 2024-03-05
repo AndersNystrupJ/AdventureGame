@@ -2,49 +2,100 @@ package org.example;
 import java.util.Scanner;
 public class UserInterface {
 
-        public void startGame() {
-            Adventure adventure = new Adventure();
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Velkommen til Adventure Game");
-            System.out.println("Skriv 'help' for intruktioner til spillet");
-            System.out.println();
+    private Adventure adventure;
+    private Scanner scanner;
 
-            System.out.println("You wake up in " + adventure.getCurrentRoom().getRoomDescription());
-            System.out.println("On the door it says " + adventure.getCurrentRoom().getRoomNumber());
+    public UserInterface() {
+        this.adventure = new Adventure();
+        this.scanner = new Scanner(System.in);
+    }
 
-            System.out.println("Where do you choose to go?");
-            while (true) { //infinite loop til break; bruges
-                String menuOption = scanner.nextLine();
 
-                if (menuOption.equals("n")) {
-                    adventure.goNorth();
-                } else if (menuOption.equals("w")) {
-                    adventure.goWest();
-                } else if (menuOption.equals("e")) {
-                    adventure.goEast();
-                } else if (menuOption.equals("s")) {
-                    adventure.goSouth();
-                } else if (menuOption.equals("look")) {
+    public void startGame() {
+        System.out.println("Welcome to the adventure game");
+        System.out.println("Type 'help' for instructions on how to play.");
+
+        while (true) {
+            System.out.println("Enter your command: ");
+            String command = scanner.nextLine().toLowerCase();
+
+            switch (command) {
+                case "n":
+                case "north":
+                case "e":
+                case "east":
+                case "s":
+                case "south":
+                case "w":
+                case "west":
+                    adventure.move(command);
+                    break;
+                case "look":
                     adventure.look();
-                } else if (menuOption.equals("help")) {
-                    System.out.println("Kommandoer:");
-                    System.out.println(" 'n' for at gå mod nord");
-                    System.out.println(" 'w' for at gå mod vest");
-                    System.out.println(" 'e' for at gå mod øst");
-                    System.out.println(" 's' for at gå mod syd");
-                    System.out.println(" 'exit' for at gå ud af spillet");
-                    System.out.println(" 'look' for at kigge rundt i dit rum");
-                } else if (menuOption.equals("exit")) {
-                    System.out.println("Du har afsluttet spillet");
+                    break;
+                case "help":
+                    printInstructions();
+                    break;
+                case "exit":
+                    System.out.println("Exiting the game.");
+                    return;
+                default:
+                    System.out.println("Invalid command. Type 'help' for instructions.");
+            }
+        }
+
+
+    }
+
+    private void printInstructions() {
+        System.out.println("Commands:");
+        System.out.println("'n' or 'North': Go North.");
+        System.out.println("'e' or 'East': Go East.");
+        System.out.println("'s' or 'South': Go south.");
+        System.out.println("'w' or 'West': Go West.");
+    }
+}
+            /*
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Welcome to Adventure Game");
+            System.out.println("Type 'help' for instructions on how to play");
+            System.out.println();
+            System.out.println("Where do you choose to go?");
+            String directionOption;
+            while (true) { //infinite loop til break; bruges
+
+                directionOption = scanner.nextLine();
+
+                if (directionOption.equalsIgnoreCase("Go north")) {
+
+                } else if (directionOption.equalsIgnoreCase("Go west")) {
+
+                } else if (directionOption.equalsIgnoreCase("Go east")) {
+
+                } else if (directionOption.equalsIgnoreCase("Go south")) {
+
+                } else if (directionOption.equalsIgnoreCase("look")) {
+                    adventure.look();
+                } else if (directionOption.equalsIgnoreCase("help")) {
+                    System.out.println("Commands:");
+                    System.out.println(" 'Go north' to go North");
+                    System.out.println(" 'Go west' to go West");
+                    System.out.println(" 'Go east' to go East");
+                    System.out.println(" 'Go south' to go South");
+                    System.out.println(" 'exit' to exit the game");
+                    System.out.println(" 'look' to look around the room");
+                } else if (directionOption.equals("exit")) {
+                    System.out.println("Game over.");
                     break;
                 } else {
-                    System.out.println("Ugyldigt. Skriv 'help' for instruktioner til spillet.");
+                    System.out.println("Invalid input. Type 'help' for instructions on how to play the game.");
                 }
             }
+
         }
     }
 
-        /*
+
         System.out.println(AdventureGame.getCurrentRoom().getRoomNumber());
         System.out.println(AdventureGame.getCurrentRoom().getRoomDescription());
         System.out.println("1. Go North");
