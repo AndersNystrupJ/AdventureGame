@@ -1,14 +1,9 @@
-import org.example.Adventure;
-import org.example.Room;
+package org.example;
 import java.util.Scanner;
 public class UserInterface {
-    public static void main(String[] args) {
-        Adventure adventure = new Adventure();
 
-        public UserInterface() {
-        }
-
-        public void startGame () {
+        public void startGame() {
+            Adventure adventure = new Adventure();
             Scanner scanner = new Scanner(System.in);
             System.out.println("Velkommen til Adventure Game");
             System.out.println("Skriv 'help' for intruktioner til spillet");
@@ -48,7 +43,6 @@ public class UserInterface {
             }
         }
     }
-}
 
         /*
         System.out.println(AdventureGame.getCurrentRoom().getRoomNumber());
