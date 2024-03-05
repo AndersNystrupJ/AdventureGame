@@ -1,41 +1,40 @@
+import org.example.Adventure;
+import org.example.Room;
 import java.util.Scanner;
 public class UserInterface {
-    Adventure adventure = new Adventure();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Adventure AdventureGame = new Adventure();
 
-    public UserInterface() {
-    }
+        System.out.println(AdventureGame.getCurrentRoom().getRoomNumber());
+        System.out.println(AdventureGame.getCurrentRoom().getRoomDescription());
+        System.out.println("1. Go North");
+        System.out.println("2. Go East");
+        System.out.println("3. Go South");
+        System.out.println("4. Go West");
+        System.out.println("5. Look");
+        System.out.println("6. to exit");
 
-    public void gameStart() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Velkommen til Adventure Game");
-        System.out.println("Skriv 'hjælp' for intruktioner til spillet");
-        System.out.println();
-
-        while (true) { //infinite loop til break; bruges
-            String menuOption = scanner.nextLine();
-
-            if (menuOption.equals("n")) {
-                adventure.goNorth();
-            } else if (menuOption.equals("w")) {
-                adventure.goWest();
-            } else if (menuOption.equals("e")) {
-                adventure.goEast();
-            } else if (menuOption.equals("s")) {
-                adventure.goSouth();
-            } else if (menuOption.equals("hjælp")) {
-                System.out.println("Kommandoer:");
-                System.out.println(" 'n' for at gå mod nord");
-                System.out.println(" 'w' for at gå mod vest");
-                System.out.println(" 'e' for at gå mod øst");
-                System.out.println(" 's' for at gå mod syd");
-                System.out.println(" 'exit' for at gå ud af spillet");
-                System.out.println(" 'look' for at kigge rundt i dit rum");
-            } else if (menuOption.equals("exit")) {
-                System.out.println("Du har afsluttet spillet");
+        while (true) {
+            int menuOption = input.nextInt();
+            if (menuOption == 1) {
+                System.out.println("Going North");
+                // metode til at gå north
+            } else if (menuOption == 2) {
+                System.out.println("Going East");
+            } else if (menuOption == 3) {
+                System.out.println("Going South");
+            } else if (menuOption == 4) {
+                System.out.println("Going West");
+            } else if (menuOption == 5) {
+                AdventureGame.look();
+            } else if (menuOption == 6) {
+                System.out.println("You have chosen to exit.");
                 break;
-            } else {
-                System.out.println("Ugyldigt. Skriv 'hjælp' for instruktioner til spillet.");
             }
+
         }
+
     }
+
 }
