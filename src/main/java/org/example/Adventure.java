@@ -51,14 +51,22 @@ public class Adventure {
         room9.setRoomWest(room8);
 
         System.out.println("Welcome to Adventure");
+        System.out.println();
         System.out.println("You are currently in " + currentRoom.getRoomNumber());
         System.out.println(currentRoom.getRoomDescription());
+        System.out.println();
 
         while (true) {
             System.out.println("Where do you want to go? (North/East/South/West)");
+            System.out.println();
+            System.out.println("Type \"help\" to get instructions");
+            System.out.println("Type \"exit\" to exit the game");
             String direction = scanner.nextLine().toLowerCase();
             move(direction);
+            // String menuAction = scanner.nextLine().toLowerCase();
+           // action(menuAction);
         }
+
     }
 
     public void move(String direction) {
@@ -107,6 +115,15 @@ public class Adventure {
                     System.out.println("You can't go west from here.");
                 }
                 break;
+            case "help":
+                System.out.println("Type \"north\" to go north");
+                System.out.println("Type \"east\" to go east");
+                System.out.println("Type \"south\" to go south");
+                System.out.println("Type \"west\" to go west");
+                System.out.println();
+                break;
+            case "exit":
+                System.exit(0);
             default:
                 System.out.println("Invalid direction. Please enter North, East, South or West.");
                 break;
