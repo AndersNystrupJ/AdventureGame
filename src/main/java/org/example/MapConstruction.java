@@ -1,11 +1,13 @@
 package org.example;
-import org.example.Room;
-
 public class MapConstruction {
 
     private Room currentRoom;
 
-    public void buildAdventure() {
+    public MapConstruction(){
+        buildMap();
+    }
+
+    public void buildMap() {
         Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...");
         Room room2 = new Room("Room 2", "A bloody room with guts on the floor.");
         Room room3 = new Room("Room 3", "A room with weird symbols on the wall.");
@@ -45,8 +47,11 @@ public class MapConstruction {
         room9.setRoomNorth(room6);
         room9.setRoomWest(room8);
     }
-
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 }
