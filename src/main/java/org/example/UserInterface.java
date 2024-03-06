@@ -75,6 +75,10 @@ public class UserInterface {
                     System.out.println("Type \"west\" to go west");
                     System.out.println();
                     break;
+                case "look":
+                    adventure.look();
+                    System.out.println();
+                    break;
                 case "exit":
                     System.exit(0);
                 default:

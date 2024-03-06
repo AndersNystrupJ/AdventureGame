@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Scanner;
-
 public class Adventure {
     private MapConstruction map = new MapConstruction();
 
