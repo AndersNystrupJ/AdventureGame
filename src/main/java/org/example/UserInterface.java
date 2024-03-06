@@ -10,6 +10,9 @@ public class UserInterface {
         this.scanner = new Scanner(System.in);
     }
 
+  System.out.println("Welcome to Adventure");
+        System.out.println("You are currently in " + MapConstruction.currentRoom.getRoomNumber());
+        System.out.println(currentRoom.getRoomDescription());
 
     public void startGame() {
         System.out.println("Welcome to the adventure game");
