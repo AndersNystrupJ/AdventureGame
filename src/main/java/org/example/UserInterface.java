@@ -78,7 +78,9 @@ public class UserInterface {
                 case "look":
                     adventure.look();
                     try {
-                        System.out.println(adventure.getMap().getCurrentRoom().getItems().get(0).getLongName());
+                        for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++){
+                            System.out.println(adventure.getMap().getCurrentRoom().getItems().get(i).getLongName());
+                        }
                     } catch (Exception e){
                     }
                     System.out.println();

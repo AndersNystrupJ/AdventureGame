@@ -14,6 +14,7 @@ public class MapConstruction {
     public void buildMap() {
         ArrayList<Item> room1items = new ArrayList<>();
         room1items.add(new Item("A shiny brass lamp","lamp"));
+        room1items.add(new Item("A big sword with engraved details", "Sword"));
 
 
         Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...",room1items);
