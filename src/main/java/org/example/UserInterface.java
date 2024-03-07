@@ -77,12 +77,16 @@ public class UserInterface {
                     break;
                 case "look":
                     adventure.look();
+                    try {
+                        System.out.println(adventure.getMap().getCurrentRoom().getItems().get(0).getLongName());
+                    } catch (Exception e){
+                    }
                     System.out.println();
                     break;
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("Invalid direction. Please enter North, East, South or West.");
+                    System.out.println("You can not go that way.");
                     break;
             }
         }

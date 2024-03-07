@@ -1,4 +1,7 @@
 package org.example;
+
+import java.util.ArrayList;
+
 public class MapConstruction {
 
     private Room currentRoom;
@@ -7,17 +10,25 @@ public class MapConstruction {
         buildMap();
     }
 
+
     public void buildMap() {
-        Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...");
-        Room room2 = new Room("Room 2", "A bloody room with guts on the floor.");
-        Room room3 = new Room("Room 3", "A room with weird symbols on the wall.");
-        Room room4 = new Room("Room 4", "A room that feels ice cold");
-        Room room5 = new Room("Room 5", "A smaller room");
-        Room room6 = new Room("Room 6", "hej");
-        Room room7 = new Room("Room 7", "med");
-        Room room8 = new Room("Room 8", "dig");
-        Room room9 = new Room("Room 9", "søde");
+        ArrayList<Item> room1items = new ArrayList<>();
+        room1items.add(new Item("A shiny brass lamp","lamp"));
+
+
+        Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...",room1items);
+        Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.", null);
+        Room room3 = new Room("Room 3", "A room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",null);
+        Room room4 = new Room("Room 4", "A room that feels ice cold",null);
+        Room room5 = new Room("Room 5", "A smaller room",null);
+        Room room6 = new Room("Room 6", "hej",null);
+        Room room7 = new Room("Room 7", "med",null);
+        Room room8 = new Room("Room 8", "dig",null);
+        Room room9 = new Room("Room 9", "søde",null);
         currentRoom = room1;
+
+
+        Player player = new Player("player1", currentRoom,null);
 
         // Room 1 (set neighbors):
         room1.setRoomEast(room2);
