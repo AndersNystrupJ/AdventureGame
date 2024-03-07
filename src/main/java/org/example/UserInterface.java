@@ -11,6 +11,12 @@ public class UserInterface {
         System.out.println("You are currently in " + adventure.getMap().getCurrentRoom().getRoomNumber());
         System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
         System.out.println();
+        System.out.println("Items in room:");
+        for (Item item : adventure.getMap().getCurrentRoom().getItems()) {
+            System.out.println(item.getLongName());
+        }
+
+        System.out.println();
 
         while (true) {
             System.out.println("Where do you want to go? (North/East/South/West)");

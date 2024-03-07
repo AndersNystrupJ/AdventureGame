@@ -1,5 +1,4 @@
 package org.example;
-
 public class Adventure {
     private MapConstruction map = new MapConstruction();
 

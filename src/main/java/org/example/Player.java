@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.ArrayList;
 
 public class Player {
@@ -12,5 +11,4 @@ public class Player {
         this.inRoom = inRoom;
         this.items = items;
     }
-
 }

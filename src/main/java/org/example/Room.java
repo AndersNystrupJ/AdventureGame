@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.ArrayList;
 
 public class Room {
@@ -11,7 +10,6 @@ public class Room {
     private Room roomWest;
     private ArrayList<Item> items;
 
-    //Constructor
     public Room(String roomNumber, String roomDescription, ArrayList<Item> items) {
         this.roomNumber = roomNumber;
         this.roomDescription = roomDescription;
@@ -72,5 +70,13 @@ public class Room {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
     }
 }
