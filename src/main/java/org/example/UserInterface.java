@@ -75,15 +75,17 @@ public class UserInterface {
                     }
                     break;
                 case "help":
-                    System.out.println("Type \"north\" to go north");
-                    System.out.println("Type \"east\" to go east");
-                    System.out.println("Type \"south\" to go south");
-                    System.out.println("Type \"west\" to go west");
+                    System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
+                    System.out.println("Type \"go east\", \"east\" or \"e\" to go east");
+                    System.out.println("Type \"go south\", \"south\" or \"s\" to go south");
+                    System.out.println("Type \"go west\", \"west\" or \"w\" to go west");
                     System.out.println();
                     break;
                 case "look":
                     adventure.look();
                     try {
+                        System.out.println();
+                        System.out.println("Items in room:");
                         for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++){
                             System.out.println(adventure.getMap().getCurrentRoom().getItems().get(i).getLongName());
                         }
