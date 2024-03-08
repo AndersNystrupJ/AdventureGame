@@ -6,23 +6,26 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         Adventure adventure = new Adventure();
         Player player = adventure.getMap().player;
+        Room room;
 
+        System.out.println();
         System.out.println("Welcome to THE BACKROOMS");
         System.out.println();
-        System.out.println("Type \"Go North/East/South/West\" to move that direction");
-        System.out.println("Type \"look\" to look around the room");
-        System.out.println("Type \"take\" to pick up an item");
-        System.out.println("Type \"inventory\" to see your inventory");
-        System.out.println("Type \"help\" to get instructions");
-        System.out.println("Type \"exit\" to exit the game");
+        System.out.println("Type commands to explore the rooms:");
+        System.out.println("- \"Go North/East/South/West\" to move");
+        System.out.println("- \"look\" to look around the room");
+        System.out.println("- \"take\" to pick up an item");
+        System.out.println("- \"drop\" to drop an item");
+        System.out.println("- \"inventory\" to view your inventory");
+        System.out.println("- \"help\" to get instructions");
+        System.out.println("- \"exit\" to quit the game");
         System.out.println();
+
         System.out.println("You find yourself in " + adventure.getMap().getCurrentRoom().getRoomDescription());
-        System.out.println("What will you do?");
 
         String itemToTake;
 
         while (true) {
-
             String input = scanner.nextLine().toLowerCase();
             String[] inputArray = input.split(" ");
             itemToTake = "";
@@ -82,15 +85,12 @@ public class UserInterface {
                         System.out.println("You can't go west from here.");
                     }
                     break;
-
-                    /*
                 case "take":
-                    String itemName = inputArray[1];
-                    player.takeItem(itemName);
+                    player.takeItem(adventure.getMap().getCurrentRoom(), itemToTake);
                     break;
-
-                     */
-
+                case "drop":
+                    player.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                    break;
                 case "help":
                     System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
                     System.out.println("Type \"go east\", \"east\" or \"e\" to go east");
@@ -100,15 +100,6 @@ public class UserInterface {
                     break;
                 case "look":
                     adventure.look();
-                    try {
-                        System.out.println();
-                        System.out.println("You look around, and notice some items in the room:");
-                        for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++) {
-                            System.out.println(adventure.getMap().getCurrentRoom().getItems().get(i).getLongName());
-                        }
-                    } catch (Exception e) {
-                    }
-                    System.out.println();
                     break;
 
                     /*

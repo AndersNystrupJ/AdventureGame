@@ -8,7 +8,7 @@ public class Room {
     private Room roomEast;
     private Room roomSouth;
     private Room roomWest;
-    private ArrayList<Item> items;
+    private ArrayList<Item> items; //
 
     public Room(String roomNumber, String roomDescription, ArrayList<Item> items) {
         this.roomNumber = roomNumber;
@@ -63,6 +63,7 @@ public class Room {
     public void setRoomWest(Room roomWest) {
         this.roomWest = roomWest;
     }
+
 
     public ArrayList<Item> getItems() {
         return items;

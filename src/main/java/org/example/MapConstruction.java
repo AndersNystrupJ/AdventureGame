@@ -2,11 +2,11 @@ package org.example;
 import java.util.ArrayList;
 
 public class MapConstruction {
-
     private Room currentRoom;
 
     public MapConstruction(){
         buildMap();
+        player = new Player("player1", currentRoom, playerInventory);
     }
 
     public void buildMap() {
@@ -15,9 +15,16 @@ public class MapConstruction {
         room1items.add(new Item("Big sword with engraved details", "sword"));
         room1items.add(new Item("Bloody book with weird symbols on it", "book"));
 
+        ArrayList<Item> room2items = new ArrayList<>();
+        room2items.add(new Item("An arm cut in half", "arm"));
+
+        ArrayList<Item> room3items = new ArrayList<>();
+        room3items.add(new Item("A doll missing its head and arms", "doll"));
+
+
         Room room1 = new Room("Room 1", "an empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
-        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.", null);
-        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",null);
+        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.", room2items);
+        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",room3items);
         Room room4 = new Room("Room 4", "a room that feels ice cold",null);
         Room room5 = new Room("Room 5", "a dark room filled with dolls. You hear small light steps around you ",null);
         Room room6 = new Room("Room 6", "a room that starts getting filled with water",null);
