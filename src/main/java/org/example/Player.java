@@ -6,22 +6,10 @@ public class Player {
     private Room inRoom;
     private ArrayList<Item> items;
 
-    public Player(String playerName, Room inRoom, ArrayList<Item> items){
+    public Player(String playerName, Room inRoom, ArrayList<Item> inventory){
         this.playerName = playerName;
         this.inRoom = inRoom;
         this.items = items;
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public Room getInRoom() {
-        return inRoom;
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
     }
 
     public void takeItem(String itemToTake) {
