@@ -3,21 +3,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     public void startGame() {
+        Scanner scanner = new Scanner(System.in);
+        Adventure adventure = new Adventure();
+        Player player = adventure.getMap().player;
 
-    Scanner scanner = new Scanner(System.in);
-    Adventure adventure = new Adventure();
-    Player player = new Player("Player 1", adventure.getMap().getCurrentRoom(), new ArrayList<>());
-    String itemToTake;
+        System.out.println("Welcome to the Backrooms");
+        System.out.println();
+        System.out.println("You find yourself in " + adventure.getMap().getCurrentRoom().getRoomDescription());
+        System.out.println("You see a number, it says " + adventure.getMap().getCurrentRoom().getRoomNumber());
 
-        System.out.println("Welcome to Adventure");
-        System.out.println();
-        System.out.println("You are currently in " + adventure.getMap().getCurrentRoom().getRoomNumber());
-        System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
-        System.out.println();
-        System.out.println("Items in room:");
-        for (Item item : adventure.getMap().getCurrentRoom().getItems()) {
-            System.out.println(item.getLongName());
-        }
+
+        // System.out.println();
+        //  System.out.println("In the room, you notice some items: ");
+        // for (Item item : adventure.getMap().getCurrentRoom().getItems()) {
+        //     System.out.println(item.getLongName());
+        // }
+
+        String itemToTake;
+
 
         System.out.println();
 
@@ -89,10 +92,15 @@ public class UserInterface {
                         System.out.println("You can't go west from here.");
                     }
                     break;
+
+                    /*
                 case "take":
                     String itemName = inputArray[1];
                     player.takeItem(itemName);
                     break;
+
+                     */
+
                 case "help":
                     System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
                     System.out.println("Type \"go east\", \"east\" or \"e\" to go east");
@@ -104,14 +112,16 @@ public class UserInterface {
                     adventure.look();
                     try {
                         System.out.println();
-                        System.out.println("Items in room:");
-                        for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++){
+                        System.out.println("You look around, and notice some items in the room:");
+                        for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++) {
                             System.out.println(adventure.getMap().getCurrentRoom().getItems().get(i).getLongName());
                         }
-                    } catch (Exception e){
+                    } catch (Exception e) {
                     }
                     System.out.println();
                     break;
+
+                    /*
                 case "take": // Take (remove item from room and put it in player inventory)
                     for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size();i++) {
                         System.out.println("Type in what you would like to take:");
@@ -124,6 +134,8 @@ public class UserInterface {
                         else {
                             System.out.println("There is no " + take + " to pick up");
                         }
+
+
                     }
                         break;
                 case "inventory":
@@ -137,6 +149,10 @@ public class UserInterface {
                     break;
             }
 
+
+
+                     */
             }
         }
     }
+}
