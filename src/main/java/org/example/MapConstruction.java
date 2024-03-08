@@ -26,7 +26,6 @@ public class MapConstruction {
         Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.",null);
         currentRoom = room1;
 
-        Player player = new Player("player1", currentRoom,null);
 
         // Room 1 (set neighbors):
         room1.setRoomEast(room2);
@@ -56,6 +55,13 @@ public class MapConstruction {
         room9.setRoomNorth(room6);
         room9.setRoomWest(room8);
     }
+    ArrayList<Item> playerInventory = new ArrayList<>();
+    Player player = new Player("player1", currentRoom, playerInventory);
+
+    public Player getPlayer() {
+        return player;
+    }
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
