@@ -22,27 +22,34 @@ public class Player {
 
     public void takeItem(Room room, String itemToTake) {
         boolean found = false;
-        for (Item item : new ArrayList<>(room.getItems())) {
+        for (Item item : room.getItems()) {
             if (item.getShortName().equalsIgnoreCase(itemToTake)) {
                 inventory.add(item);
                 System.out.println("I've picked up " + item.getLongName());
-                room.removeItem(item);
+                room.getItems().remove(item);
                 found = true;
                 break;
             }
         }
         if (!found) {
-            System.out.println("There is no such item in this room.");
+            System.out.println("I don't see that anywhere.");
         }
     }
 
     public void dropItem(Room room, String itemName) {
+        Item itemToRemove = null;
         for (Item item : inventory) {
             if (item.getShortName().equals(itemName)) {
-                room.addItem(item);
-                inventory.remove(item);
-                System.out.println("I dropped " + item.getLongName());
+                itemToRemove = item;
+                break;
             }
+        }
+        if (itemToRemove != null) {
+            room.addItem(itemToRemove);
+            inventory.remove(itemToRemove);
+            System.out.println("I have dropped " + itemToRemove.getLongName());
+        } else {
+            System.out.println("I don't have " + itemName + " in my bag.");
         }
     }
 

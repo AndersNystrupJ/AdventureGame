@@ -27,7 +27,7 @@ public class UserInterface {
 
         while (true) {
             String input = scanner.nextLine().toLowerCase();
-            String[] inputArray = input.split(" ");
+            String[] inputArray = input.split(" "); // det der split
             itemToTake = "";
             if (inputArray[0].equals("take")) {
                 input = inputArray[0];
@@ -89,7 +89,12 @@ public class UserInterface {
                     player.takeItem(adventure.getMap().getCurrentRoom(), itemToTake);
                     break;
                 case "drop":
-                    player.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                    if (inputArray.length > 1) {
+                        itemToTake = inputArray[1];
+                        player.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                    } else {
+                        System.out.println("Please specify an item to drop.");
+                    }
                     break;
                 case "help":
                     System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
@@ -100,6 +105,9 @@ public class UserInterface {
                     break;
                 case "look":
                     adventure.look();
+                    break;
+                case "inventory":
+                    player.viewInventory();
                     break;
 
                     /*

@@ -13,7 +13,7 @@ public class Room {
     public Room(String roomNumber, String roomDescription, ArrayList<Item> items) {
         this.roomNumber = roomNumber;
         this.roomDescription = roomDescription;
-        this.items = items;
+        this.items = (items != null) ? items : new ArrayList<>();
     }
 
     public String getRoomNumber() {
