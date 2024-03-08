@@ -1,10 +1,13 @@
 package org.example;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     public void startGame() {
 
     Scanner scanner = new Scanner(System.in);
     Adventure adventure = new Adventure();
+    Player player = new Player("Player 1", adventure.getMap().getCurrentRoom(), new ArrayList<>());
+    String itemToTake;
 
         System.out.println("Welcome to Adventure");
         System.out.println();
@@ -25,7 +28,17 @@ public class UserInterface {
             System.out.println("Type \"help\" to get instructions");
             System.out.println("Type \"exit\" to exit the game");
 
-            switch (scanner.nextLine().toLowerCase()) {
+            String input = scanner.nextLine().toLowerCase();
+            String[] inputArray = input.split(" ");
+            itemToTake = "";
+            if (inputArray[0].equals("take")) {
+                input = inputArray[0];
+                itemToTake = inputArray[1];
+            } else if (inputArray[0].equals("drop")) {
+                input = inputArray[0];
+                itemToTake = inputArray[1];
+            }
+            switch (input) {
                 case "go north":
                 case "north":
                 case "n":
@@ -73,6 +86,10 @@ public class UserInterface {
                     } else {
                         System.out.println("You can't go west from here.");
                     }
+                    break;
+                case "take":
+                    String itemName = inputArray[1];
+                    player.takeItem(itemName);
                     break;
                 case "help":
                     System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
