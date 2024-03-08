@@ -12,10 +12,10 @@ public class MapConstruction {
     public void buildMap() {
         ArrayList<Item> room1items = new ArrayList<>();
         room1items.add(new Item("A shiny brass lamp","lamp"));
-        room1items.add(new Item("A big sword with engraved details", "Sword"));
-        room1items.add(new Item("A bloody book with weird symbols on it", "Book"));
+        room1items.add(new Item("A big sword with engraved details", "sword"));
+        room1items.add(new Item("A bloody book with weird symbols on it", "book"));
 
-        Room room1 = new Room("Room 1", "An empty room with with two doors. There's an unpleasent smell lingering in the air...",room1items);
+        Room room1 = new Room("Room 1", "An empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
         Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.", null);
         Room room3 = new Room("Room 3", "A room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",null);
         Room room4 = new Room("Room 4", "A room that feels ice cold",null);

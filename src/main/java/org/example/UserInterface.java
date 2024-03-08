@@ -94,7 +94,7 @@ public class UserInterface {
                 case "exit":
                     System.exit(0);
                 default:
-                    System.out.println("You can not go that way.");
+                    System.out.println("You cannot go that way.");
                     break;
             }
         }
