@@ -7,31 +7,21 @@ public class UserInterface {
         Adventure adventure = new Adventure();
         Player player = adventure.getMap().player;
 
-        System.out.println("Welcome to the Backrooms");
+        System.out.println("Welcome to THE BACKROOMS");
+        System.out.println();
+        System.out.println("Type \"Go North/East/South/West\" to move that direction");
+        System.out.println("Type \"look\" to look around the room");
+        System.out.println("Type \"take\" to pick up an item");
+        System.out.println("Type \"inventory\" to see your inventory");
+        System.out.println("Type \"help\" to get instructions");
+        System.out.println("Type \"exit\" to exit the game");
         System.out.println();
         System.out.println("You find yourself in " + adventure.getMap().getCurrentRoom().getRoomDescription());
-        System.out.println("You see a number, it says " + adventure.getMap().getCurrentRoom().getRoomNumber());
-
-
-        // System.out.println();
-        //  System.out.println("In the room, you notice some items: ");
-        // for (Item item : adventure.getMap().getCurrentRoom().getItems()) {
-        //     System.out.println(item.getLongName());
-        // }
+        System.out.println("What will you do?");
 
         String itemToTake;
 
-
-        System.out.println();
-
         while (true) {
-            System.out.println("Where do you want to go? (North/East/South/West)");
-            System.out.println("Type \"look\" to look around the room");
-            System.out.println("Type \"take\" to pick up an item");
-            System.out.println("Type \"inventory\" to see your inventory");
-            System.out.println();
-            System.out.println("Type \"help\" to get instructions");
-            System.out.println("Type \"exit\" to exit the game");
 
             String input = scanner.nextLine().toLowerCase();
             String[] inputArray = input.split(" ");
