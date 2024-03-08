@@ -24,6 +24,8 @@ public class UserInterface {
         while (true) {
             System.out.println("Where do you want to go? (North/East/South/West)");
             System.out.println("Type \"look\" to look around the room");
+            System.out.println("Type \"take\" to pick up an item");
+            System.out.println("Type \"inventory\" to see your inventory");
             System.out.println();
             System.out.println("Type \"help\" to get instructions");
             System.out.println("Type \"exit\" to exit the game");
@@ -110,12 +112,31 @@ public class UserInterface {
                     }
                     System.out.println();
                     break;
+                case "take": // Take (remove item from room and put it in player inventory)
+                    for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size();i++) {
+                        System.out.println("Type in what you would like to take:");
+                        String take = scanner.nextLine();
+                        if (adventure.getMap().getCurrentRoom().getItems().get(i).getShortName().equals(take.toLowerCase())) {
+                            adventure.getMap().getPlayer().getItems().add(adventure.getMap().getCurrentRoom().getItems().get(i));
+                            adventure.getMap().getCurrentRoom().getItems().remove(adventure.getMap().getCurrentRoom().getItems().get(i));
+                            break;
+                        }
+                        else {
+                            System.out.println("There is no " + take + " to pick up");
+                        }
+                    }
+                        break;
+                case "inventory":
+                    for (int i = 0; i < adventure.getMap().playerInventory.size(); i++)
+                    System.out.println(adventure.getMap().playerInventory.get(i).getLongName());
+                    break;
                 case "exit":
                     System.exit(0);
                 default:
                     System.out.println("You cannot go that way.");
                     break;
             }
+
+            }
         }
     }
-}
