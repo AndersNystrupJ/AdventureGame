@@ -22,6 +22,7 @@ public class UserInterface {
             System.out.println("Where do you want to go? (North/East/South/West)");
             System.out.println("Type \"look\" to look around the room");
             System.out.println("Type \"take\" to pick up an item");
+            System.out.println("Type \"drop\" to drop an item");
             System.out.println("Type \"inventory\" to see your inventory");
             System.out.println();
             System.out.println("Type \"help\" to get instructions");
@@ -110,8 +111,24 @@ public class UserInterface {
                     }
                         break;
                 case "inventory":
+                    System.out.println("Inventory:");
                     for (int i = 0; i < adventure.getMap().playerInventory.size(); i++)
-                    System.out.println(adventure.getMap().playerInventory.get(i).getLongName());
+                        System.out.println(adventure.getMap().playerInventory.get(i).getLongName());
+                    System.out.println();
+                    break;
+                case "drop":
+                    for (int i = 0; i < adventure.getMap().playerInventory.size(); i++) {
+                        System.out.println("Type in what item to drop");
+                        String drop = scanner.nextLine();
+                        if (adventure.getMap().playerInventory.get(i).getShortName().equalsIgnoreCase(drop)) {
+                            adventure.getMap().getCurrentRoom().getItems().add(adventure.getMap().playerInventory.get(i));
+                            adventure.getMap().playerInventory.remove(adventure.getMap().playerInventory.get(i));
+                            break;
+                        }
+                        else {
+                            System.out.println("You don't have a " + drop + " in your inventory");
+                        }
+                    }
                     break;
                 case "exit":
                     System.exit(0);

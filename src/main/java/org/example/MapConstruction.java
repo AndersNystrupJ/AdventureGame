@@ -14,16 +14,24 @@ public class MapConstruction {
         room1items.add(new Item("A shiny brass lamp","lamp"));
         room1items.add(new Item("A big sword with engraved details", "sword"));
         room1items.add(new Item("A bloody book with weird symbols on it", "book"));
+        ArrayList<Item> room2items = new ArrayList<>();
+        ArrayList<Item> room3items = new ArrayList<>();
+        ArrayList<Item> room4items = new ArrayList<>();
+        ArrayList<Item> room5items = new ArrayList<>();
+        ArrayList<Item> room6items = new ArrayList<>();
+        ArrayList<Item> room7items = new ArrayList<>();
+        ArrayList<Item> room8items = new ArrayList<>();
+        ArrayList<Item> room9items = new ArrayList<>();
 
         Room room1 = new Room("Room 1", "An empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
-        Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.", null);
-        Room room3 = new Room("Room 3", "A room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",null);
-        Room room4 = new Room("Room 4", "A room that feels ice cold",null);
-        Room room5 = new Room("Room 5", "A smaller room",null);
-        Room room6 = new Room("Room 6", "A room with a blue sofa",null);
-        Room room7 = new Room("Room 7", "A room with ",null);
-        Room room8 = new Room("Room 8", "A dusty library filled with cobwebs",null);
-        Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.",null);
+        Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.", room2items);
+        Room room3 = new Room("Room 3", "A room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",room3items);
+        Room room4 = new Room("Room 4", "A room that feels ice cold",room4items);
+        Room room5 = new Room("Room 5", "A smaller room",room5items);
+        Room room6 = new Room("Room 6", "A room with a blue sofa",room6items);
+        Room room7 = new Room("Room 7", "A room with ",room7items);
+        Room room8 = new Room("Room 8", "A dusty library filled with cobwebs",room8items);
+        Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.",room9items);
         currentRoom = room1;
 
 
