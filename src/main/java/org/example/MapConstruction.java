@@ -23,15 +23,16 @@ public class MapConstruction {
         ArrayList<Item> room8items = new ArrayList<>();
         ArrayList<Item> room9items = new ArrayList<>();
 
-        Room room1 = new Room("Room 1", "An empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
-        Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.", room2items);
-        Room room3 = new Room("Room 3", "A room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",room3items);
-        Room room4 = new Room("Room 4", "A room that feels ice cold",room4items);
-        Room room5 = new Room("Room 5", "A smaller room",room5items);
-        Room room6 = new Room("Room 6", "A room with a blue sofa",room6items);
-        Room room7 = new Room("Room 7", "A room with ",room7items);
-        Room room8 = new Room("Room 8", "A dusty library filled with cobwebs",room8items);
-        Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.",room9items);
+
+        Room room1 = new Room("Room 1", "an empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
+        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.", room2items);
+        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",room3items);
+        Room room4 = new Room("Room 4", "a room that feels ice cold",null);
+        Room room5 = new Room("Room 5", "a dark room filled with dolls. You hear small light steps around you ",null);
+        Room room6 = new Room("Room 6", "a room that starts getting filled with water",null);
+        Room room7 = new Room("Room 7", "a lightly lit room with an ominous shadowy figure standing in the corner",null);
+        Room room8 = new Room("Room 8", "a room filled with windows. Some weird figures look at you through them.",null);
+        Room room9 = new Room("Room 9", "an eerie room filled with cobwebs. A strange noise echoes from the darkness.",null);
         currentRoom = room1;
 
 

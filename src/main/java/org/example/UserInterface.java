@@ -1,34 +1,42 @@
 package org.example;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     public void startGame() {
-
-    Scanner scanner = new Scanner(System.in);
-    Adventure adventure = new Adventure();
-
-        System.out.println("Welcome to Adventure");
-        System.out.println();
-        System.out.println("You are currently in " + adventure.getMap().getCurrentRoom().getRoomNumber());
-        System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
-        System.out.println();
-        System.out.println("Items in room:");
-        for (Item item : adventure.getMap().getCurrentRoom().getItems()) {
-            System.out.println(item.getLongName());
-        }
+        Scanner scanner = new Scanner(System.in);
+        Adventure adventure = new Adventure();
+        Player player = adventure.getMap().player;
+        Room room;
 
         System.out.println();
+        System.out.println("Welcome to THE BACKROOMS");
+        System.out.println();
+        System.out.println("Type commands to explore the rooms:");
+        System.out.println("- \"Go North/East/South/West\" to move");
+        System.out.println("- \"look\" to look around the room");
+        System.out.println("- \"take\" to pick up an item");
+        System.out.println("- \"drop\" to drop an item");
+        System.out.println("- \"inventory\" to view your inventory");
+        System.out.println("- \"help\" to get instructions");
+        System.out.println("- \"exit\" to quit the game");
+        System.out.println();
+
+        System.out.println("You find yourself in " + adventure.getMap().getCurrentRoom().getRoomDescription());
+
+        String itemToTake;
 
         while (true) {
-            System.out.println("Where do you want to go? (North/East/South/West)");
-            System.out.println("Type \"look\" to look around the room");
-            System.out.println("Type \"take\" to pick up an item");
-            System.out.println("Type \"drop\" to drop an item");
-            System.out.println("Type \"inventory\" to see your inventory");
-            System.out.println();
-            System.out.println("Type \"help\" to get instructions");
-            System.out.println("Type \"exit\" to exit the game");
-
-            switch (scanner.nextLine().toLowerCase()) {
+            String input = scanner.nextLine().toLowerCase();
+            String[] inputArray = input.split(" "); // det der split
+            itemToTake = "";
+            if (inputArray[0].equals("take")) {
+                input = inputArray[0];
+                itemToTake = inputArray[1];
+            } else if (inputArray[0].equals("drop")) {
+                input = inputArray[0];
+                itemToTake = inputArray[1];
+            }
+            switch (input) {
                 case "go north":
                 case "north":
                 case "n":
@@ -77,6 +85,17 @@ public class UserInterface {
                         System.out.println("You can't go west from here.");
                     }
                     break;
+                case "take":
+                    player.takeItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                    break;
+                case "drop":
+                    if (inputArray.length > 1) {
+                        itemToTake = inputArray[1];
+                        player.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                    } else {
+                        System.out.println("Please specify an item to drop.");
+                    }
+                    break;
                 case "help":
                     System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
                     System.out.println("Type \"go east\", \"east\" or \"e\" to go east");
@@ -86,16 +105,12 @@ public class UserInterface {
                     break;
                 case "look":
                     adventure.look();
-                    try {
-                        System.out.println();
-                        System.out.println("Items in room:");
-                        for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size(); i++){
-                            System.out.println(adventure.getMap().getCurrentRoom().getItems().get(i).getLongName());
-                        }
-                    } catch (Exception e){
-                    }
-                    System.out.println();
                     break;
+                case "inventory":
+                    player.viewInventory();
+                    break;
+
+                    /*
                 case "take": // Take (remove item from room and put it in player inventory)
                     for (int i = 0; i < adventure.getMap().getCurrentRoom().getItems().size();i++) {
                         System.out.println("Type in what you would like to take:");
@@ -108,27 +123,13 @@ public class UserInterface {
                         else {
                             System.out.println("There is no " + take + " to pick up");
                         }
+
+
                     }
                         break;
                 case "inventory":
-                    System.out.println("Inventory:");
                     for (int i = 0; i < adventure.getMap().playerInventory.size(); i++)
-                        System.out.println(adventure.getMap().playerInventory.get(i).getLongName());
-                    System.out.println();
-                    break;
-                case "drop":
-                    for (int i = 0; i < adventure.getMap().playerInventory.size(); i++) {
-                        System.out.println("Type in what item to drop");
-                        String drop = scanner.nextLine();
-                        if (adventure.getMap().playerInventory.get(i).getShortName().equalsIgnoreCase(drop)) {
-                            adventure.getMap().getCurrentRoom().getItems().add(adventure.getMap().playerInventory.get(i));
-                            adventure.getMap().playerInventory.remove(adventure.getMap().playerInventory.get(i));
-                            break;
-                        }
-                        else {
-                            System.out.println("You don't have a " + drop + " in your inventory");
-                        }
-                    }
+                    System.out.println(adventure.getMap().playerInventory.get(i).getLongName());
                     break;
                 case "exit":
                     System.exit(0);
@@ -137,6 +138,10 @@ public class UserInterface {
                     break;
             }
 
+
+
+                     */
             }
         }
     }
+}
