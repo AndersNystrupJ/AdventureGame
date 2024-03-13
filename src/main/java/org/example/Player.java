@@ -5,15 +5,25 @@ public class Player {
     private String playerName;
     private Room inRoom;
     private ArrayList<Item> inventory;
+    private int health;
 
-    public Player(String playerName, Room inRoom, ArrayList<Item> inventory) {
+    public Player(String playerName, Room inRoom, ArrayList<Item> inventory, int health) {
         this.playerName = playerName;
         this.inRoom = inRoom;
         this.inventory = inventory;
+        this.health = health;
     }
 
     public Room getInRoom() {
         return inRoom;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void setInRoom(Room inRoom) {
@@ -61,6 +71,43 @@ public class Player {
             }
         } else {
             System.out.println("I don't have anything in my bag.");
+        }
+    }
+    public void playerHealth() {
+        System.out.println("hp: " + health);
+        if (health <= 0) {
+            System.out.println("You have died...");
+            System.exit(0);
+        }else if (health > 60) {
+            System.out.println("You're good on health");
+        } else if (health > 40) {
+            System.out.println("You're good on health, but avoid fighting");
+        } else if (health < 40) {
+            System.out.println("You're low on health, be careful");
+        }
+    }
+    public void eat(Room room, String foodName) {
+        Item itemToEat = null;
+        for (Item food : inventory) {
+            if (food.getShortName().equals(foodName) && food instanceof Food) {
+                itemToEat = food;
+                break;
+            }
+        }
+        if (itemToEat != null) {
+            System.out.println("Eating " + itemToEat.getLongName() + "...");
+            health = health + (((Food) itemToEat).getHealthPoints());
+            if (((Food) itemToEat).getHealthPoints() < 0) {
+                System.out.println("Food was poisonous. You've lost " + ((Food) itemToEat).getHealthPoints() + " hp");
+                playerHealth();
+                inventory.remove(itemToEat);
+            } else {
+                System.out.println("You've gained " + ((Food) itemToEat).getHealthPoints() + " hp");
+                playerHealth();
+                inventory.remove(itemToEat);
+            }
+        } else {
+            System.out.println("I don't have " + itemToEat + " in my bag.");
         }
     }
 }
