@@ -35,7 +35,7 @@ public class Player {
         for (Item item : room.getItems()) {
             if (item.getShortName().equalsIgnoreCase(itemToTake)) {
                 inventory.add(item);
-                System.out.println("I've picked up " + item.getLongName());
+                System.out.println("You picked up " + item.getLongName());
                 room.getItems().remove(item);
                 found = true;
                 break;
@@ -55,22 +55,22 @@ public class Player {
             }
         }
         if (itemToRemove != null) {
-            room.addItem(itemToRemove);
+            room.addItem(itemToRemove.getLongName(), itemToRemove.getShortName());
             inventory.remove(itemToRemove);
-            System.out.println("I have dropped " + itemToRemove.getLongName());
+            System.out.println("You dropped " + itemToRemove.getLongName());
         } else {
-            System.out.println("I don't have " + itemName + " in my bag.");
+            System.out.println("You don't have " + itemName + " in your inventory.");
         }
     }
 
     public void viewInventory() {
         if (!inventory.isEmpty()) {
-            System.out.println("I check my bag and I see:");
+            System.out.println("Inventory:");
             for (Item item : inventory) {
                 System.out.println("- " + item.getLongName());
             }
         } else {
-            System.out.println("I don't have anything in my bag.");
+            System.out.println("Your inventory is empty.");
         }
     }
     public void playerHealth() {
@@ -107,7 +107,7 @@ public class Player {
                 inventory.remove(itemToEat);
             }
         } else {
-            System.out.println("I don't have " + itemToEat + " in my bag.");
+            System.out.println("I don't have " + foodName + " in my bag.");
         }
     }
 }

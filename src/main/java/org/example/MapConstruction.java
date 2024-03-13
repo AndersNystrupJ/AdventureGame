@@ -10,50 +10,44 @@ public class MapConstruction {
     }
 
     public void buildMap() {
-        // ITEMS & FOOD
-        // Room 1
-        ArrayList<Item> room1items = new ArrayList<>();
-        room1items.add(new Item("A shiny brass lamp","lamp"));
-        room1items.add(new Item("A big sword with engraved details", "sword"));
-        room1items.add(new Item("A bloody book with weird symbols on it", "book"));
-        room1items.add(new Food("A red gloomy apple", "apple", 10));
 
-        // Room 2
-        ArrayList<Item> room2items = new ArrayList<>();
+        // room 1
+        Room room1 = new Room("Room 1", "an empty room with two doors. There's an unpleasent smell lingering in the air...");
+        room1.addItem("A shiny brass lamp", "lamp");
+        room1.addFood("a blue apple", "apple", 10);
 
-        //Room 3
-        ArrayList<Item> room3items = new ArrayList<>();
-        room3items.add(new Item("A silver talisman, with an empty socket", "talisman"));
+        // room 2
+        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.");
+        room2.addItem("a severed arm", "arm");
+        room2.addFood("a bloody finger", "finger", -20);
 
-        //Room 4
-        ArrayList<Item> room4items = new ArrayList<>();
+        // room 3
+        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.");
+        room3.addItem("a white candle", "candle");
+        room3.addFood("a weird looking magical mushroom", "mushroom", 75);
 
-        //Room 5
-        ArrayList<Item> room5items = new ArrayList<>();
+        // room 4
+        Room room4 = new Room("Room 4", "a room that feels ice cold");
 
-        //Room 6
-        ArrayList<Item> room6items = new ArrayList<>();
+        // room 5
+        Room room5 = new Room("Room 5", "a dark room filled with dolls. You hear small light steps around you ");
+        room5.addItem("a doll with missing body parts", "doll");
 
-        //Room 7
-        ArrayList<Item> room7items = new ArrayList<>();
+        // room 6
+        Room room6 = new Room("Room 6", "a room that starts getting filled with water");
 
-        //Room 8
-        ArrayList<Item> room8items = new ArrayList<>();
-
-        //Room 9
-        ArrayList<Item> room9items = new ArrayList<>();
+        // room 7
+        Room room7 = new Room("Room 7", "a lightly lit room with an ominous shadowy figure standing in the corner");
+        room7.addFood("a snickers bar", "bar", 5);
 
 
+        // room 8
+        Room room8 = new Room("Room 8", "a room filled with windows. Some weird figures look at you through them.");
 
-        Room room1 = new Room("Room 1", "an empty room with two doors. There's an unpleasent smell lingering in the air...",room1items);
-        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.", room2items);
-        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.",room3items);
-        Room room4 = new Room("Room 4", "a room that feels ice cold",room4items);
-        Room room5 = new Room("Room 5", "a dark room filled with dolls. You hear small light steps around you ",room5items);
-        Room room6 = new Room("Room 6", "a room that starts getting filled with water",room6items);
-        Room room7 = new Room("Room 7", "a lightly lit room with an ominous shadowy figure standing in the corner",room7items);
-        Room room8 = new Room("Room 8", "a room filled with windows. Some weird figures look at you through them.",room8items);
-        Room room9 = new Room("Room 9", "an eerie room filled with cobwebs. A strange noise echoes from the darkness.",room9items);
+        // room 9
+        Room room9 = new Room("Room 9", "an eerie room filled with cobwebs. A strange noise echoes from the darkness.");
+        room9.addFood("a little red spider", "spider", -50);
+
         currentRoom = room1;
 
 
@@ -84,6 +78,7 @@ public class MapConstruction {
         // Room 9 (set neighbors):
         room9.setRoomNorth(room6);
         room9.setRoomWest(room8);
+
     }
     ArrayList<Item> playerInventory = new ArrayList<>();
     Player player = new Player("player1", currentRoom, playerInventory,100);

@@ -8,12 +8,11 @@ public class Room {
     private Room roomEast;
     private Room roomSouth;
     private Room roomWest;
-    private ArrayList<Item> items; //
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public Room(String roomNumber, String roomDescription, ArrayList<Item> items) {
+    public Room(String roomNumber, String roomDescription) {
         this.roomNumber = roomNumber;
         this.roomDescription = roomDescription;
-        this.items = (items != null) ? items : new ArrayList<>();
     }
 
     public String getRoomNumber() {
@@ -73,8 +72,12 @@ public class Room {
         this.items = items;
     }
 
-    public void addItem(Item item) {
-        items.add(item);
+    public void addItem(String longName, String shortName) {
+        items.add(new Item(longName,shortName));
+    }
+
+    public void addFood(String longName, String shortName, int healthPoints) {
+        items.add(new Food(longName, shortName, healthPoints));
     }
 
     public void removeItem(Item item) {
