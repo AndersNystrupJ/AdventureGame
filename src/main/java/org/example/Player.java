@@ -3,6 +3,15 @@ import java.util.ArrayList;
 
 public class Player {
     private String playerName;
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
     private Room inRoom;
     private ArrayList<Item> inventory;
     private int health;
@@ -74,11 +83,11 @@ public class Player {
         }
     }
     public void playerHealth() {
-        System.out.println("hp: " + health);
+        System.out.println("HP: " + health);
         if (health <= 0) {
             System.out.println("You have died...");
             System.exit(0);
-        }else if (health > 60) {
+        } else if (health > 60) {
             System.out.println("You're good on health");
         } else if (health > 40) {
             System.out.println("You're good on health, but avoid fighting");

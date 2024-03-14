@@ -12,41 +12,37 @@ public class MapConstruction {
     public void buildMap() {
 
         // room 1
-        Room room1 = new Room("Room 1", "an empty room with two doors. There's an unpleasent smell lingering in the air...");
+        Room room1 = new Room("Room 1", "An empty room with two doors. There's an unpleasent smell lingering in the air...");
         room1.addItem("A shiny brass lamp", "lamp");
-        room1.addFood("a blue apple", "apple", 10);
 
         // room 2
-        Room room2 = new Room("Room 2", "a room with bloody walls and guts scattered on the floor.");
-        room2.addItem("a severed arm", "arm");
-        room2.addFood("a bloody finger", "finger", -20);
+        Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.");
+        room2.addFood("A strange dotted mushroom","mushroom",-20);
 
         // room 3
-        Room room3 = new Room("Room 3", "a room with filled with candles and with some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.");
-        room3.addItem("a white candle", "candle");
-        room3.addFood("a weird looking magical mushroom", "mushroom", 75);
+        Room room3 = new Room("Room 3", "A room filled with candles and some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.");
+        room3.addFood("A purple flask containing some elixir", "flask", 20);
 
         // room 4
-        Room room4 = new Room("Room 4", "a room that feels ice cold");
+        Room room4 = new Room("Room 4", "A room that feels ice cold. There's ice on the walls and big chains hanging from the ceiling.");
 
         // room 5
-        Room room5 = new Room("Room 5", "a dark room filled with dolls. You hear small light steps around you ");
-        room5.addItem("a doll with missing body parts", "doll");
+        Room room5 = new Room("Room 5", "A dark room filled with dolls. You hear small light steps around you ");
+        room5.addItem("A doll with missing body parts", "doll");
 
         // room 6
-        Room room6 = new Room("Room 6", "a room that starts getting filled with water");
+        Room room6 = new Room("Room 6", "A room that starts getting filled with water");
 
         // room 7
-        Room room7 = new Room("Room 7", "a lightly lit room with an ominous shadowy figure standing in the corner");
-        room7.addFood("a snickers bar", "bar", 5);
-
+        Room room7 = new Room("Room 7", "A lightly lit room with an ominous shadowy figure standing in the corner");
+        room7.addFood("A snickers bar", "bar", 5);
 
         // room 8
-        Room room8 = new Room("Room 8", "a room filled with windows. Some weird figures look at you through them.");
+        Room room8 = new Room("Room 8", "A room filled with windows. Some weird figures look at you through them.");
 
         // room 9
-        Room room9 = new Room("Room 9", "an eerie room filled with cobwebs. A strange noise echoes from the darkness.");
-        room9.addFood("a little red spider", "spider", -50);
+        Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.");
+        room9.addItem("A mysterious looking key", "Key");
 
         currentRoom = room1;
 
@@ -81,7 +77,7 @@ public class MapConstruction {
 
     }
     ArrayList<Item> playerInventory = new ArrayList<>();
-    Player player = new Player("player1", currentRoom, playerInventory,100);
+    Player player = new Player("", currentRoom, playerInventory,100);
 
 
     public Player getPlayer() {
