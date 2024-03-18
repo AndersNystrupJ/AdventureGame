@@ -11,14 +11,14 @@ public class RangedWeapon extends Weapon{
     public void uses() {
         while (ammo > 0) {
             ammo--;
+            break;
+        }
             if (ammo == 0) {
                 System.out.println("You are out of ammo");
-                break;
             } else {
                 System.out.println("Ammo: " + ammo);
             }
         }
-    }
 
     public int getAmmo() {
         return ammo;
