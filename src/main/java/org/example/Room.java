@@ -72,12 +72,8 @@ public class Room {
         this.items = items;
     }
 
-    public void addItem(String longName, String shortName) {
-        items.add(new Item(longName,shortName));
-    }
-
-    public void addFood(String longName, String shortName, int healthPoints) {
-        items.add(new Food(longName, shortName, healthPoints));
+    public void addItem(Item item) {
+        items.add(item);
     }
 
     public void removeItem(Item item) {

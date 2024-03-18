@@ -54,17 +54,32 @@ public class Player {
             System.out.println("I don't see that anywhere.");
         }
     }
-
+    public void unequipWeapon (Room room, String weaponName) {
+        Weapon weaponToRemove = null;
+        for (Item weapon : weaponSlot) {
+            if (weapon.getShortName().equalsIgnoreCase(weaponName)) {
+                weaponToRemove = (Weapon) weapon;
+                break;
+            }
+        }
+        if (weaponToRemove != null) {
+            inventory.add(weaponToRemove);
+            weaponSlot.remove(weaponToRemove);
+            System.out.println("You have put " + weaponToRemove.getLongName() + " in your inventory");
+        } else {
+            System.out.println("You don't have a " + weaponName + " equipped");
+        }
+    }
     public void dropItem(Room room, String itemName) {
         Item itemToRemove = null;
         for (Item item : inventory) {
-            if (item.getShortName().equals(itemName)) {
+            if (item.getShortName().equalsIgnoreCase(itemName)) {
                 itemToRemove = item;
                 break;
             }
         }
         if (itemToRemove != null) {
-            room.addItem(itemToRemove.getLongName(), itemToRemove.getShortName());
+            room.addItem(itemToRemove);
             inventory.remove(itemToRemove);
             System.out.println("You dropped " + itemToRemove.getLongName());
         } else {
@@ -82,6 +97,7 @@ public class Player {
             System.out.println("Your inventory is empty.");
         }
     }
+
     public void playerHealth() {
         System.out.println("HP: " + health);
         if (health <= 0) {
@@ -95,6 +111,7 @@ public class Player {
             System.out.println("You're low on health, be careful");
         }
     }
+
     public void eat(Room room, String foodName) {
         Item itemToEat = null;
         for (Item food : inventory) {
@@ -117,6 +134,41 @@ public class Player {
             }
         } else {
             System.out.println("I don't have " + foodName + " in my bag.");
+        }
+    }
+
+    ArrayList<Weapon> weaponSlot = new ArrayList<>(1);
+
+    public void equip(Room room, String weaponName) {
+        try {
+            Item itemToEquip = null;
+            for (Item weapon : inventory) {
+                if (weapon instanceof Weapon) {
+                    if (weapon.getShortName().equalsIgnoreCase(weaponName)) {
+                        itemToEquip = weapon;
+                        weaponSlot.add((Weapon) weapon);
+                        inventory.remove(weapon);
+                        System.out.println("You have equipped " + weapon.getLongName());
+                        break;
+                    } else {
+                        System.out.println("You don't have a " + weaponName + " in your inventory");
+                        break;
+                    }
+
+                } else {
+                    System.out.println("Only weapon items can be equipped");
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println("You already have a weapon equipped");
+        }
+    }
+    public void attack() {
+        while (!weaponSlot.isEmpty()) {
+            weaponSlot.get(0).uses();
+            System.out.println("You swing your " + weaponSlot.get(0).getShortName());
+            break;
         }
     }
 }
