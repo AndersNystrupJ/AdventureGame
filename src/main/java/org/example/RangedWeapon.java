@@ -9,14 +9,11 @@ public class RangedWeapon extends Weapon{
 
     @Override
     public void uses() {
-        while (ammo > 0) {
+        if (ammo > 0) {
             ammo--;
-            break;
-        }
-            if (ammo == 0) {
+            System.out.println("Ammo: " + ammo);
+        } else {
                 System.out.println("You are out of ammo");
-            } else {
-                System.out.println("Ammo: " + ammo);
             }
         }
 
