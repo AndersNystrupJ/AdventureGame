@@ -4,6 +4,23 @@ import java.util.Arrays;
 
 public class Player {
     private String playerName;
+    private Room inRoom;
+    private ArrayList<Item> inventory;
+    private int health;
+    private Weapon currentWeapon;
+
+
+    public Player(String playerName, Room inRoom, ArrayList<Item> inventory, int health, Weapon currentWeapon) {
+        this.playerName = playerName;
+        this.inRoom = inRoom;
+        this.inventory = inventory; //opret new inventory direkte her i stedet for i map
+        this.health = health;
+        this.currentWeapon = currentWeapon;
+    }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
 
     public String getPlayerName() {
         return playerName;
@@ -11,17 +28,6 @@ public class Player {
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
-    }
-
-    private Room inRoom;
-    private ArrayList<Item> inventory;
-    private int health;
-
-    public Player(String playerName, Room inRoom, ArrayList<Item> inventory, int health) {
-        this.playerName = playerName;
-        this.inRoom = inRoom;
-        this.inventory = inventory;
-        this.health = health;
     }
 
     public Room getInRoom() {
@@ -53,24 +59,6 @@ public class Player {
         }
         if (!found) {
             System.out.println("I don't see that anywhere.");
-        }
-    }
-
-    // Weapon[] weaponSlot = new Weapon[0];
-    public void unequipWeapon(Room room, String weaponName) {
-        Weapon weaponToRemove = null;
-        for (Item weapon : weaponSlot) {
-            if (weapon.getShortName().equalsIgnoreCase(weaponName)) {
-                weaponToRemove = (Weapon) weapon;
-                break;
-            }
-        }
-        if (weaponToRemove != null) {
-            inventory.add(weaponToRemove);
-            weaponSlot.remove(0);
-            System.out.println("You have put " + weaponToRemove.getLongName() + " in your inventory");
-        } else {
-            System.out.println("You don't have a " + weaponName + " equipped");
         }
     }
 
@@ -141,43 +129,45 @@ public class Player {
         }
     }
 
-    ArrayList<Weapon> weaponSlot = new ArrayList<>();
 
-
-    public void equip(Room room, String weaponName) {
-        Item itemToEquip = null;
+    public void equip(String weaponName) {
         boolean weaponFound = false;
         for (Item weapon : inventory) {
             if (weapon.getShortName().equalsIgnoreCase(weaponName) && weapon instanceof Weapon) {
-                itemToEquip = weapon;
+                currentWeapon = (Weapon) weapon;
+                System.out.println("You have equipped " + currentWeapon.getLongName());
                 weaponFound = true;
-                if (!weaponSlot.isEmpty()) {
-                    System.out.println("You have swapped " + weapon.getLongName() + " with " + weaponSlot.get(0).getLongName());
-                    inventory.add(weaponSlot.get(0));
-                    weaponSlot.remove(0);
-                    weaponSlot.add((Weapon) weapon);
-                    inventory.remove(weapon);
-                } else {
-                    weaponSlot.add((Weapon) weapon);
-                    inventory.remove(weapon);
-                    System.out.println("You have equipped " + weapon.getLongName());
-                }
-                break;
             } else if (weapon.getShortName().equalsIgnoreCase(weaponName) && !(weapon instanceof Weapon)) {
                 System.out.println("Only weapons can be equipped");
-                break;
-            } else {
-                System.out.println("You don't have a " + weaponName + " in your inventory");
+                weaponFound = true;
+            }
+        }
+        if (!weaponFound){
+            System.out.println("You don't have a " + weaponName + " in your inventory");
+            }
+        }
+
+   /* public void unequipWeapon(Room room, String weaponName) {
+        Weapon weaponToRemove = null;
+        for (Item weapon : weaponSlot) {
+            if (weapon.getShortName().equalsIgnoreCase(weaponName)) {
+                weaponToRemove = (Weapon) weapon;
                 break;
             }
         }
+        if (weaponToRemove != null) {
+            inventory.add(weaponToRemove);
+            weaponSlot.remove(0);
+            System.out.println("You have put " + weaponToRemove.getLongName() + " in your inventory");
+        } else {
+            System.out.println("You don't have a " + weaponName + " equipped");
+        }
     }
-
+    */
         public void attack() {
-            while (!weaponSlot.isEmpty()) {
-                weaponSlot.get(0).uses();
-                System.out.println("You attack with your " + weaponSlot.get(0).getShortName());
-                break;
+            if (currentWeapon != null) {
+                currentWeapon.uses();
+                System.out.println("You attack with your " + currentWeapon.getShortName());
             }
         }
     }
