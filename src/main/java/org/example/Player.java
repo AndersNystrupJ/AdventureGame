@@ -166,8 +166,8 @@ public class Player {
                 break;
             } else {
                 System.out.println("You don't have a " + weaponName + " in your inventory");
+                break;
             }
-            break;
         }
     }
 
