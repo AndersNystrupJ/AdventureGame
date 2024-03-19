@@ -73,6 +73,7 @@ public class Player {
             System.out.println("You don't have a " + weaponName + " equipped");
         }
     }
+
     public void dropItem(Room room, String itemName) {
         Item itemToRemove = null;
         for (Item item : inventory) {
@@ -140,7 +141,8 @@ public class Player {
         }
     }
 
-    ArrayList<Weapon> weaponSlot = new ArrayList<>(1);
+    ArrayList<Weapon> weaponSlot = new ArrayList<>();
+
 
     public void equip(Room room, String weaponName) {
         Item itemToEquip = null;
