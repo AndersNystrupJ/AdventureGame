@@ -1,12 +1,10 @@
 package org.example;
-import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
         Adventure adventure = new Adventure();
-        Player player = adventure.getMap().player;
-        Room room;
+        Player player = adventure.player;
 
 
         System.out.println("Insert player name:");
@@ -41,7 +39,7 @@ public class UserInterface {
 
         System.out.println("You find yourself in " + adventure.getMap().getCurrentRoom().getRoomDescription());
         System.out.println();
-        adventure.getMap().player.playerHealth();
+        adventure.player.playerHealth();
         System.out.println();
 
         String itemToTake;
@@ -75,7 +73,7 @@ public class UserInterface {
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomNumber());
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
                             System.out.println();
-                            adventure.getMap().player.playerHealth();
+                            adventure.player.playerHealth();
                             System.out.println();
                         } else {
                             System.out.println("You can't go north from here.");
@@ -89,7 +87,7 @@ public class UserInterface {
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomNumber());
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
                             System.out.println();
-                            adventure.getMap().player.playerHealth();
+                            adventure.player.playerHealth();
                             System.out.println();
                         } else {
                             System.out.println("You can't go east from here.");
@@ -103,7 +101,7 @@ public class UserInterface {
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomNumber());
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
                             System.out.println();
-                            adventure.getMap().player.playerHealth();
+                            adventure.player.playerHealth();
                             System.out.println();
                         } else {
                             System.out.println("You can't go south from here.");
@@ -117,27 +115,27 @@ public class UserInterface {
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomNumber());
                             System.out.println(adventure.getMap().getCurrentRoom().getRoomDescription());
                             System.out.println();
-                            adventure.getMap().player.playerHealth();
+                            adventure.player.playerHealth();
                             System.out.println();
                         } else {
                             System.out.println("You can't go west from here.");
                         }
                         break;
                     case "take":
-                        player.takeItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                        adventure.takeItem(adventure.player.getInRoom() ,itemToTake);
                         System.out.println();
                         break;
                     case "drop":
                         if (inputArray.length > 1) {
                             itemToTake = inputArray[1];
-                            player.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
+                            adventure.dropItem(adventure.player.getInRoom(), itemToTake);
                             System.out.println();
                         } else {
                             System.out.println("Please specify an item to drop.");
                         }
                         break;
                     case "equip":
-                        player.equip(itemToTake);
+                        adventure.equip(itemToTake);
                         System.out.println();
                         break;
                     /*case "unequip":
@@ -149,11 +147,11 @@ public class UserInterface {
                         }
                         break;*/
                     case "eat":
-                        player.eat(adventure.getMap().getCurrentRoom(), itemToTake);
+                        adventure.eat(itemToTake);
                         System.out.println();
                         break;
                     case "attack":
-                        player.attack();
+                        adventure.attack();
                         break;
                     case "help":
                         System.out.println("Type \"go north\", \"north\" or \"n\" to go north");
@@ -173,11 +171,11 @@ public class UserInterface {
                     case "look":
                         adventure.look();
                         System.out.println();
-                        adventure.getMap().player.playerHealth();
+                        adventure.playerHealth();
                         System.out.println();
                         break;
                     case "inventory":
-                        player.viewInventory();
+                        adventure.viewInventory();
                         System.out.println();
                         break;
                     case "exit":

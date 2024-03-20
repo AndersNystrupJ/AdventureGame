@@ -9,6 +9,7 @@ public class Room {
     private Room roomSouth;
     private Room roomWest;
     private ArrayList<Item> items = new ArrayList<>();
+    private Enemy enemy;
 
     public Room(String roomNumber, String roomDescription) {
         this.roomNumber = roomNumber;
@@ -78,5 +79,12 @@ public class Room {
 
     public void removeItem(Item item) {
         items.remove(item);
+    }
+    public void addEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
     }
 }

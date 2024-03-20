@@ -1,8 +1,8 @@
 package org.example;
 
 public class MeleeWeapon extends Weapon{
-    public MeleeWeapon(String longName, String shortName) {
-        super(longName,shortName);
+    public MeleeWeapon(String longName, String shortName, int damage, int ammo) {
+        super(longName,shortName, damage, ammo);
     }
 
     @Override

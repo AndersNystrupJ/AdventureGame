@@ -1,23 +1,19 @@
 package org.example;
 
-public class RangedWeapon extends Weapon{
-    private int ammo;
-    public RangedWeapon(String longName, String shortName, int ammo) {
-        super(longName,shortName);
-        this.ammo = ammo;
+public class RangedWeapon extends Weapon {
+
+    public RangedWeapon(String longName, String shortName, int damage, int ammo) {
+        super(longName, shortName, damage, ammo);
     }
 
     @Override
     public void uses() {
         if (ammo > 0) {
             ammo--;
-            System.out.println("Ammo: " + ammo);
-        } else {
-                System.out.println("You are out of ammo");
+            if (ammo < 4) {
+                System.out.println("You are low on ammo");
             }
         }
 
-    public int getAmmo() {
-        return ammo;
     }
 }
