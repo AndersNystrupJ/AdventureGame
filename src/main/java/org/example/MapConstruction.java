@@ -26,7 +26,7 @@ public class MapConstruction {
 
         // room 3
         Room room3 = new Room("Room 3", "A room filled with candles and some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.");
-        room3.addItem(new Food("Purple flask containing some elixir", "flask", 20));
+        room3.addItem(new Food("Purple flask containing some elixir", "flask", 40));
 
         // room 4
         Room room4 = new Room("Room 4", "A room that feels ice cold. There's ice on the walls and big chains hanging from the ceiling.");
@@ -41,9 +41,10 @@ public class MapConstruction {
         // room 7
         Room room7 = new Room("Room 7", "A lightly lit room with an ominous shadowy figure standing in the corner");
         room7.addItem(new Food("Snickers bar", "bar", 5));
+        room7.addEnemy(new Enemy("Shadow Spirit", "A purple glooming shadow spirit with evil eyes", 40, (new MeleeWeapon("Shadow Blade", "Blade", 20, 1))));
 
         // room 8
-        Room room8 = new Room("Room 8", "A room filled with windows. Some weird figures look at you through them.");
+        Room room8 = new Room("Room 8", "A room with a locked door to the north..");
 
         // room 9
         Room room9 = new Room("Room 9", "An eerie room filled with cobwebs. A strange noise echoes from the darkness.");
