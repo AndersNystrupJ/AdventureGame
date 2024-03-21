@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Adventure {
 
-    private MapConstruction map = new MapConstruction();
+    MapConstruction map = new MapConstruction();
 
-    Player player = new Player("", getMap().getCurrentRoom(), null, 100, null);
+    Player player = new Player("", map.getCurrentRoom(), null, 100, null);
 
     public void look() {
         Room currentRoom = map.getCurrentRoom();
@@ -36,15 +36,8 @@ public class Adventure {
         player.equip(weaponName);
     }
 
-    /*
-    public void attack(){
-        player.attack();
-    }
-
-     */
-
-   public void attackEnemy(String enemyToAttack) {
-        player.attackEnemy(enemyToAttack);
+    public void attack(Room room, String enemyName) {
+        player.attack(room, enemyName);
     }
 
     public void eat(String foodName){
@@ -66,4 +59,5 @@ public class Adventure {
     public void takeItem(Room room, String itemToTake) {
         player.takeItem(room, itemToTake);
     }
+
 }
