@@ -48,8 +48,8 @@ public class UserInterface {
         while (gameStartTrue) {
 
 
-            String input = scanner.nextLine().toLowerCase();
-            String[] inputArray = input.split(" "); // det der split
+           String input = scanner.nextLine().toLowerCase();
+           String[] inputArray = input.split(" "); // det der split
             itemToTake = "";
             if (inputArray[0].equals("take")) {
                 input = inputArray[0];
@@ -61,6 +61,9 @@ public class UserInterface {
                 input = inputArray[0];
                 itemToTake = inputArray[1];
             } else if (inputArray[0].equals("equip")) {
+                input = inputArray[0];
+                itemToTake = inputArray[1];
+            } else if (inputArray[0].equals("attack")) {
                 input = inputArray[0];
                 itemToTake = inputArray[1];
             }
@@ -122,7 +125,7 @@ public class UserInterface {
                         }
                         break;
                     case "take":
-                        adventure.takeItem(adventure.player.getInRoom() ,itemToTake);
+                        adventure.takeItem(adventure.player.getInRoom(), itemToTake);
                         System.out.println();
                         break;
                     case "drop":
@@ -138,20 +141,12 @@ public class UserInterface {
                         adventure.equip(itemToTake);
                         System.out.println();
                         break;
-                    /*case "unequip":
-                        if (inputArray.length > 1) {
-                            player.unequipWeapon(adventure.getMap().getCurrentRoom(), itemToTake);
-                            System.out.println();
-                        } else {
-                            System.out.println("Please specify an item to drop");
-                        }
-                        break;*/
                     case "eat":
                         adventure.eat(itemToTake);
                         System.out.println();
                         break;
                     case "attack":
-                        adventure.attack();
+                        adventure.attackEnemy(itemToTake);
                         break;
                     case "help":
                         System.out.println("Type \"go north\", \"north\" or \"n\" to go north");

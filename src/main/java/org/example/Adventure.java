@@ -36,8 +36,15 @@ public class Adventure {
         player.equip(weaponName);
     }
 
-    public void attack() {
+    /*
+    public void attack(){
         player.attack();
+    }
+
+     */
+
+   public void attackEnemy(String enemyToAttack) {
+        player.attackEnemy(enemyToAttack);
     }
 
     public void eat(String foodName){
@@ -59,8 +66,4 @@ public class Adventure {
     public void takeItem(Room room, String itemToTake) {
         player.takeItem(room, itemToTake);
     }
-
-    // ENEMIES:
-    Enemy enemy1 = new Enemy("Lvl 10 crook", "Human - bandit", 20, (new MeleeWeapon("Broken dagger", "dagger", 5, 1)));
-
 }

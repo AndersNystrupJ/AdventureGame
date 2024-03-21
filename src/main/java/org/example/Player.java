@@ -163,34 +163,88 @@ public class Player {
          }
      }
      */
-    public void attack() {
+
+    /*
+     public void attack() {
+         if (currentWeapon != null && currentWeapon.getAmmo() > 0) {
+             if (getInRoom().getEnemy() != null) {
+                 System.out.println("You attack " + getInRoom().getEnemy().getName() + " with your " + currentWeapon.getShortName());
+                 currentWeapon.uses();
+                 getInRoom().getEnemy().setHealth(getInRoom().getEnemy().getHealth() - currentWeapon.getDamage());
+                 System.out.println("Enemy health: " + getInRoom().getEnemy().getHealth());
+                 System.out.println();
+                 if (getInRoom().getEnemy().getHealth() <= 0) {
+                     System.out.println("You have killed " + getInRoom().getEnemy().getName());
+                     getInRoom().getItems().add(getInRoom().getEnemy().getEnemyWeapon());
+                     getInRoom().addEnemy(null);
+                     System.out.println();
+                 } else {
+                     System.out.println(getInRoom().getEnemy().getName() + " attacks you");
+                     health = health - getInRoom().getEnemy().getEnemyWeapon().getDamage();
+                     playerHealth();
+                     System.out.println();
+                 }
+             } else {
+                 System.out.println("You attack the air with your " + currentWeapon.getShortName());
+                 currentWeapon.uses();
+             }
+         }else if (currentWeapon != null && currentWeapon.getAmmo() == 0) {
+             System.out.println("You are out of ammo");
+         } else {
+             System.out.println("You don't have a weapon equipped");
+         }
+     }
+
+     */
+    public void attackEnemy(String enemyName) {
         if (currentWeapon != null && currentWeapon.getAmmo() > 0) {
-            if (getInRoom().getEnemy() != null) {
-                System.out.println("You attack " + getInRoom().getEnemy().getName() + " with your " + currentWeapon.getShortName());
-                currentWeapon.uses();
-                getInRoom().getEnemy().setHealth(getInRoom().getEnemy().getHealth() - currentWeapon.getDamage());
-                System.out.println("Enemy health: " + getInRoom().getEnemy().getHealth());
-                System.out.println();
-                if (getInRoom().getEnemy().getHealth() <= 0) {
-                    System.out.println("You have killed " + getInRoom().getEnemy().getName());
-                    getInRoom().getItems().add(getInRoom().getEnemy().getEnemyWeapon());
-                    getInRoom().addEnemy(null);
+            Enemy enemyToAttack = null;
+            for (Enemy enemy : getInRoom().getEnemies()) {
+                if (enemy.getName().equalsIgnoreCase(enemyName)) {
+                    enemyToAttack = enemy;
+                    System.out.println("You attack " + enemyToAttack.getName() + " with your " + currentWeapon.getShortName());
+                    currentWeapon.uses();
+                    enemyToAttack.setHealth(enemyToAttack.getHealth() - currentWeapon.getDamage());
+                    System.out.println("Enemy health: " + enemyToAttack.getHealth());
                     System.out.println();
+                    if (enemyToAttack.getHealth() <= 0) {
+                        System.out.println("You have killed " + enemyToAttack.getName());
+                        getInRoom().getItems().add(enemyToAttack.getEnemyWeapon());
+                        getInRoom().getEnemies().remove(enemyToAttack);
+                        System.out.println();
+                    } else {
+                        System.out.println(enemyToAttack.getName() + " attacks you");
+                        health = health - enemyToAttack.getEnemyWeapon().getDamage();
+                        playerHealth();
+                        System.out.println();
+                    }
+                } else if (getInRoom().getEnemy() != null) {
+                    System.out.println("You attack " + getInRoom().getEnemies().get(0).getName() + " with your " + currentWeapon.getShortName());
+                    currentWeapon.uses();
+                    getInRoom().getEnemies().get(0).setHealth(getInRoom().getEnemies().get(0).getHealth() - currentWeapon.getDamage());
+                    System.out.println("Enemy health: " + getInRoom().getEnemies().get(0).getHealth());
+                    System.out.println();
+                    if (getInRoom().getEnemies().get(0).getHealth() <= 0) {
+                        System.out.println("You have killed " + getInRoom().getEnemies().get(0).getName());
+                        getInRoom().getItems().add(getInRoom().getEnemies().get(0).getEnemyWeapon());
+                        getInRoom().getEnemies().remove(0);
+                        System.out.println();
+                    } else {
+                        System.out.println(getInRoom().getEnemies().get(0).getName() + " attacks you");
+                        health = health - getInRoom().getEnemies().get(0).getEnemyWeapon().getDamage();
+                        playerHealth();
+                        System.out.println();
+                    }
                 } else {
-                    System.out.println(getInRoom().getEnemy().getName() + " attacks you");
-                    health = health - getInRoom().getEnemy().getEnemyWeapon().getDamage();
-                    playerHealth();
-                    System.out.println();
+                    System.out.println("You attack the air with your " + currentWeapon.getShortName());
+                    currentWeapon.uses();
                 }
-            } else {
-                System.out.println("You attack the air with your " + currentWeapon.getShortName());
-                currentWeapon.uses();
             }
-        }else if (currentWeapon != null && currentWeapon.getAmmo() == 0) {
+        } else if (currentWeapon != null && currentWeapon.getAmmo() == 0) {
             System.out.println("You are out of ammo");
         } else {
             System.out.println("You don't have a weapon equipped");
         }
     }
-
 }
+
