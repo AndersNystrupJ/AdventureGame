@@ -147,55 +147,6 @@ public class Player {
         }
     }
 
-    /* public void unequipWeapon(Room room, String weaponName) {
-         Weapon weaponToRemove = null;
-         for (Item weapon : weaponSlot) {
-             if (weapon.getShortName().equalsIgnoreCase(weaponName)) {
-                 weaponToRemove = (Weapon) weapon;
-                 break;
-             }
-         }
-         if (weaponToRemove != null) {
-             inventory.add(weaponToRemove);
-             weaponSlot.remove(0);
-             System.out.println("You have put " + weaponToRemove.getLongName() + " in your inventory");
-         } else {
-             System.out.println("You don't have a " + weaponName + " equipped");
-         }
-     }
-     */
-   /* public void attack() {
-        if (currentWeapon != null && currentWeapon.getAmmo() > 0) {
-            if (getInRoom().getEnemy() != null) {
-                System.out.println("You attack " + getInRoom().getEnemy().getName() + " with your " + currentWeapon.getShortName());
-                currentWeapon.uses();
-                getInRoom().getEnemy().setHealth(getInRoom().getEnemy().getHealth() - currentWeapon.getDamage());
-                System.out.println("Enemy health: " + getInRoom().getEnemy().getHealth());
-                System.out.println();
-                if (getInRoom().getEnemy().getHealth() <= 0) {
-                    System.out.println("You have killed " + getInRoom().getEnemy().getName());
-                    getInRoom().getItems().add(getInRoom().getEnemy().getEnemyWeapon());
-                    getInRoom().addEnemy(null);
-                    System.out.println();
-                } else {
-                    System.out.println(getInRoom().getEnemy().getName() + " attacks you");
-                    health = health - getInRoom().getEnemy().getEnemyWeapon().getDamage();
-                    playerHealth();
-                    System.out.println();
-                }
-            } else {
-                System.out.println("You attack the air with your " + currentWeapon.getShortName());
-                currentWeapon.uses();
-            }
-        }else if (currentWeapon != null && currentWeapon.getAmmo() == 0) {
-            System.out.println("You are out of ammo");
-        } else {
-            System.out.println("You don't have a weapon equipped");
-        }
-    }
-
-    */
-
     public void attack(Room room, String enemyName) {
         Enemy enemyToAttack = null;
         if (currentWeapon != null && currentWeapon.getAmmo() > 0) {

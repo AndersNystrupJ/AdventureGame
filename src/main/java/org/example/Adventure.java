@@ -12,17 +12,18 @@ public class Adventure {
         Room currentRoom = map.getCurrentRoom();
         if (currentRoom != null) {
             System.out.println(currentRoom.getRoomDescription());
+            System.out.println();
             System.out.println("You look around and notice:");
+            System.out.println();
             ArrayList<Item> items = currentRoom.getItems();
-            if (items != null) {
-                for (Item item : items) {
+            for (Item item : items) {
                     System.out.println("- " + item.getLongName());
-                }
-            } else {
-                System.out.println("There are no items in this room.");
             }
-        } else {
-            System.out.println("You are not in any room.");
+            System.out.println();
+            System.out.println("Enemies:");
+            for (Enemy enemy : currentRoom.getEnemies()) {
+                System.out.println("- " + enemy.getName());
+            }
         }
     }
 
