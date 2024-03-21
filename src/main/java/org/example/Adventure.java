@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Adventure {
 
-    private MapConstruction map = new MapConstruction();
+    MapConstruction map = new MapConstruction();
 
     Player player = new Player("", map.getCurrentRoom(), null, 100, null);
 
