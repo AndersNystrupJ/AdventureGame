@@ -51,18 +51,24 @@ public class UserInterface {
             String input = scanner.nextLine().toLowerCase();
             String[] inputArray = input.split(" "); // det der split
             itemToTake = "";
-            if (inputArray[0].equals("take")) {
-                input = inputArray[0];
-                itemToTake = inputArray[1];
-            } else if (inputArray[0].equals("drop")) {
-                input = inputArray[0];
-                itemToTake = inputArray[1];
-            } else if (inputArray[0].equals("eat")) {
-                input = inputArray[0];
-                itemToTake = inputArray[1];
-            } else if (inputArray[0].equals("equip")) {
-                input = inputArray[0];
-                itemToTake = inputArray[1];
+
+            if (inputArray.length > 1) {
+                if (inputArray[0].equals("take")) {
+                    input = inputArray[0];
+                    itemToTake = inputArray[1];
+                } else if (inputArray[0].equals("drop")) {
+                    input = inputArray[0];
+                    itemToTake = inputArray[1];
+                } else if (inputArray[0].equals("eat")) {
+                    input = inputArray[0];
+                    itemToTake = inputArray[1];
+                } else if (inputArray[0].equals("equip")) {
+                    input = inputArray[0];
+                    itemToTake = inputArray[1];
+                } else if (inputArray[0].equals("attack")) {
+                    input = inputArray[0];
+                    itemToTake = inputArray[1];
+                }
             }
                 switch (input) {
                     case "go north":
@@ -122,13 +128,13 @@ public class UserInterface {
                         }
                         break;
                     case "take":
-                        adventure.takeItem(adventure.player.getInRoom() ,itemToTake);
+                        adventure.takeItem(adventure.getMap().getCurrentRoom(), itemToTake);
                         System.out.println();
                         break;
                     case "drop":
                         if (inputArray.length > 1) {
                             itemToTake = inputArray[1];
-                            adventure.dropItem(adventure.player.getInRoom(), itemToTake);
+                            adventure.dropItem(adventure.getMap().getCurrentRoom(), itemToTake);
                             System.out.println();
                         } else {
                             System.out.println("Please specify an item to drop.");
@@ -151,7 +157,7 @@ public class UserInterface {
                         System.out.println();
                         break;
                     case "attack":
-                        adventure.attack();
+                        adventure.attack(adventure.getMap().getCurrentRoom(), itemToTake);
                         break;
                     case "help":
                         System.out.println("Type \"go north\", \"north\" or \"n\" to go north");

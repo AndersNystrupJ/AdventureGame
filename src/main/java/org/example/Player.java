@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -106,7 +107,7 @@ public class Player {
     public void eat(String foodName) {
         Item itemToEat = null;
         for (Item food : inventory) {
-            if (food.getShortName().equals(foodName) && food instanceof Food) {
+            if (food.getShortName().equalsIgnoreCase(foodName) && food instanceof Food) {
                 itemToEat = food;
                 break;
             }
@@ -163,7 +164,7 @@ public class Player {
          }
      }
      */
-    public void attack() {
+   /* public void attack() {
         if (currentWeapon != null && currentWeapon.getAmmo() > 0) {
             if (getInRoom().getEnemy() != null) {
                 System.out.println("You attack " + getInRoom().getEnemy().getName() + " with your " + currentWeapon.getShortName());
@@ -193,4 +194,61 @@ public class Player {
         }
     }
 
+    */
+
+    public void attack(Room room, String enemyName) {
+        Enemy enemyToAttack = null;
+        if (currentWeapon != null && currentWeapon.getAmmo() > 0) {
+            if (room.getEnemies().isEmpty()) {
+                System.out.println("You attack the air with your " + currentWeapon.getShortName());
+                currentWeapon.uses();
+            } else if (room.getEnemies().size() > 1) {
+                for (Enemy enemy : room.getEnemies()) {
+                    if (enemy.getName().equalsIgnoreCase(enemyName) && !room.getEnemies().isEmpty()) {
+                        enemyToAttack = enemy;
+                    }
+                }
+                if (enemyToAttack != null) {
+                    System.out.println("You attack " + enemyToAttack.getName() + " with your " + currentWeapon.getShortName());
+                    currentWeapon.uses();
+                    enemyToAttack.setHealth(enemyToAttack.getHealth() - currentWeapon.getDamage());
+                    System.out.println("Enemy health: " + enemyToAttack.getHealth());
+                    System.out.println();
+                    if (enemyToAttack.getHealth() <= 0) {
+                        System.out.println("You have killed " + enemyToAttack.getName());
+                        room.getItems().add(enemyToAttack.getEnemyWeapon());
+                        room.getEnemies().remove(enemyToAttack);
+                        System.out.println();
+                    } else {
+                        System.out.println(enemyToAttack.getName() + " attacks you");
+                        health = health - enemyToAttack.getEnemyWeapon().getDamage();
+                        playerHealth();
+                        System.out.println();
+                    }
+                } else {
+                    enemyToAttack = room.getEnemies().get(0);
+                    System.out.println("You attack " + enemyToAttack.getName() + " with your " + currentWeapon.getShortName());
+                    currentWeapon.uses();
+                    enemyToAttack.setHealth(enemyToAttack.getHealth() - currentWeapon.getDamage());
+                    System.out.println("Enemy health: " + enemyToAttack.getHealth());
+                    System.out.println();
+                    if (enemyToAttack.getHealth() <= 0) {
+                        System.out.println("You have killed " + enemyToAttack.getName());
+                        room.getItems().add(enemyToAttack.getEnemyWeapon());
+                        room.getEnemies().remove(enemyToAttack);
+                        System.out.println();
+                    } else {
+                        System.out.println(enemyToAttack.getName() + " attacks you");
+                        health = health - enemyToAttack.getEnemyWeapon().getDamage();
+                        playerHealth();
+                        System.out.println();
+                    }
+                }
+            } else if (currentWeapon != null && currentWeapon.getAmmo() == 0) {
+                System.out.println("You are out of ammo");
+            } else {
+                System.out.println("You don't have a weapon equipped");
+            }
+        }
+    }
 }

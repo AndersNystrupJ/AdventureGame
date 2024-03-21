@@ -17,12 +17,13 @@ public class MapConstruction {
         room1.addItem(new Item("Shiny brass lamp", "lamp"));
         room1.addItem(new MeleeWeapon("Large two-handed sword", "sword", 5, 1));
         room1.addItem(new RangedWeapon("Wooden crossbow", "Crossbow", 10, 6));
-        room1.addEnemy(new Enemy("Lvl 10 crook", "Human - bandit", 20, (new MeleeWeapon("Broken dagger", "dagger", 10, 1))));
+        room1.addEnemy(new Enemy("Bandit", "Human", 20, (new MeleeWeapon("Broken dagger", "dagger", 10, 1))));
+        room1.addEnemy(new Enemy("Mage", "Human", 10, (new MeleeWeapon("Wooden staff", "staff", 15, 1))));
 
 
         // room 2
         Room room2 = new Room("Room 2", "A room with bloody walls and guts scattered on the floor.");
-        room2.addItem(new Food("Strange dotted mushroom","mushroom",-20));
+        room2.addItem(new Food("Strange dotted mushroom", "mushroom",-20));
 
         // room 3
         Room room3 = new Room("Room 3", "A room filled with candles and some kind of shrine in the middle. There's weird symbols covering all the walls.. It looks like some kind of ceremony have taken place recently.");

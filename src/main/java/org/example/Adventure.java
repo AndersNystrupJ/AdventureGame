@@ -6,7 +6,7 @@ public class Adventure {
 
     private MapConstruction map = new MapConstruction();
 
-    Player player = new Player("", getMap().getCurrentRoom(), null, 100, null);
+    Player player = new Player("", map.getCurrentRoom(), null, 100, null);
 
     public void look() {
         Room currentRoom = map.getCurrentRoom();
@@ -36,8 +36,8 @@ public class Adventure {
         player.equip(weaponName);
     }
 
-    public void attack() {
-        player.attack();
+    public void attack(Room room, String enemyName) {
+        player.attack(room, enemyName);
     }
 
     public void eat(String foodName){
@@ -59,8 +59,5 @@ public class Adventure {
     public void takeItem(Room room, String itemToTake) {
         player.takeItem(room, itemToTake);
     }
-
-    // ENEMIES:
-    Enemy enemy1 = new Enemy("Lvl 10 crook", "Human - bandit", 20, (new MeleeWeapon("Broken dagger", "dagger", 5, 1)));
 
 }
